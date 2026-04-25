@@ -1,13 +1,13 @@
 // ==UserScript==
 // @name         Big Black Gym Log
 // @namespace    http://tampermonkey.net/
-// @version      0.9.01
+// @version      0.9.03
 // @description  A high-fidelity, gamified stat tracker built to integrate seamlessly with Torn's native UI.
 // @author       BigBlackHawk [3550896]
 // @match        https://www.torn.com/*
 // @grant        none
-// @updateURL    https://raw.githubusercontent.com/BigBlackHawk42069/Big-Black-Gym-Log/refs/heads/main/Big-Black-Gym-Log.js
-// @downloadURL  https://raw.githubusercontent.com/BigBlackHawk42069/Big-Black-Gym-Log/refs/heads/main/Big-Black-Gym-Log.js
+// @updateURL    https://raw.githubusercontent.com/BigBlackHawk42069/asdfaskijdnfawef/refs/heads/main/Big-Black-Gym-Log-Maxified.js
+// @downloadURL  https://raw.githubusercontent.com/BigBlackHawk42069/asdfaskijdnfawef/refs/heads/main/Big-Black-Gym-Log-Maxified.js
 // ==/UserScript==
 
 (function () {
@@ -1263,8 +1263,8 @@
                     cursor:pointer; background:0 0; box-shadow:none; /*-------*/
                     border-bottom:1px solid rgba(255,255,255,0.05); /*--------*/
                     border-right:1px solid rgba(255,255,255,0.05); /*---------*/
-                    transition:transform .1s; /*------------------------------*/
-                    overflow:hidden; } /*-------------------------------------*/
+                    transition:transform .1s; overflow:hidden; /*-------------*/
+                    user-select:none; -webkit-user-select:none; } /*----------*/
                     .bbgl-day-cell.empty { background:0 0; box-shadow:none;     
                     cursor:default; pointer-events:none; } /*-----------------*/
                     .bbgl-day-cell.is-plate { z-index:2; border-bottom:1px solid rgba(0,0,0,0.4);
