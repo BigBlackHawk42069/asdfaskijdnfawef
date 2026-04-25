@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Big Black Gym Log
 // @namespace    http://tampermonkey.net/
-// @version      0.9.05
+// @version      0.9.01
 // @description  A high-fidelity, gamified stat tracker built to integrate seamlessly with Torn's native UI.
 // @author       BigBlackHawk [3550896]
 // @match        https://www.torn.com/*
@@ -1385,8 +1385,8 @@
                     #bbgl-panel.bbgl-expanded .day-num { font-size:13px; /*---*/
                     width:30px; height:30px; } /*-----------------------------*/
                     .bbgl-day-cell.ghost-cell .day-num { color:#999; } /*-----*/
-                    .bbgl-day-cell:not(.empty):not(.is-viewing):hover .day-num { color:#fff;
-                    background:#555; transform:scale(1); } /*-----------------*/
+                    @media (hover: hover) { .bbgl-day-cell:not(.empty):not(.is-viewing):hover .day-num {
+                    color:#fff; background:#555; transform:scale(1); } } /*---*/
                     .bbgl-day-cell.is-viewing .day-num { color:#fff; /*-------*/
                     background:#888; transform:none; /*-----------------------*/
                     z-index:50; font-size:13px!important; } /*----------------*/
