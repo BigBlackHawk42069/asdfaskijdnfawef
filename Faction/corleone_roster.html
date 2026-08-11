@@ -1,0 +1,369 @@
+<title>The Corleone Family: Rank Proposal</title>
+<style>
+  :root{
+    --bg: #0d0c0c;
+    --panel: #1c1a1a;
+    --panel-line: #33201f;
+    --line: #332c2c;
+    --line-strong: #4a3d3d;
+    --ink: #efe6dc;
+    --ink-dim: #b9ada0;
+    --ink-faint: #857a70;
+    --red: #c6272d;
+    --red-strong: #e2393f;
+    --red-wash: #2c1414;
+    --gold: #d9b44a;
+    --gold-strong: #ecc766;
+    --gold-wash: #2b230f;
+    --tier-lead: #e2393f;
+    --tier-lead-wash: #2c1413;
+    --tier-dept: #d9b44a;
+    --tier-dept-wash: #2b230f;
+    --tier-liaison: #c97b9a;
+    --tier-liaison-wash: #2a1a22;
+    --tier-officer: #9fb0a8;
+    --tier-officer-wash: #1c211f;
+    --tier-prestige: #8f8577;
+    --tier-prestige-wash: #201d19;
+    --shadow: 0 1px 2px rgba(0,0,0,.5), 0 14px 40px rgba(0,0,0,.55);
+  }
+
+  *{ box-sizing: border-box; }
+  body{
+    background: var(--bg);
+    background-image: radial-gradient(ellipse 900px 500px at 50% -10%, rgba(198,39,45,.10), transparent);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    padding: 48px 24px 100px;
+  }
+  .sheet{
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .banner{
+    background: #000;
+    border: 1px solid var(--panel-line);
+    box-shadow: var(--shadow), inset 0 0 0 1px rgba(198,39,45,.15);
+    border-radius: 3px;
+    padding: 38px 30px 32px;
+    text-align: center;
+    margin-bottom: 26px;
+  }
+  .kicker{
+    font-size: 10.5px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+  h1{
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 700;
+    font-size: 42px;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    color: var(--red-strong);
+    text-shadow: 0 0 22px rgba(226,57,63,.35);
+    margin: 0 0 10px;
+    text-wrap: balance;
+  }
+  .subtitle{
+    font-family: Georgia, "Times New Roman", serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--gold-strong);
+  }
+
+  .intro-panel{
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--red);
+    border-radius: 3px;
+    padding: 22px 26px;
+    margin-bottom: 22px;
+    box-shadow: var(--shadow);
+  }
+  .intro-panel h2{
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 19px;
+    color: var(--gold-strong);
+    margin: 0 0 10px;
+  }
+  .intro-panel p{
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--ink-dim);
+    margin: 0;
+    max-width: 66ch;
+  }
+  .intro-panel strong{ color: var(--ink); font-weight: 600; }
+
+  section.tier{
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--line-strong);
+    border-radius: 3px;
+    padding: 22px 26px 8px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+  }
+  section.tier.t-lead{ border-left-color: var(--tier-lead); }
+  section.tier.t-dept{ border-left-color: var(--tier-dept); }
+  section.tier.t-liaison{ border-left-color: var(--tier-liaison); }
+  section.tier.t-officer{ border-left-color: var(--tier-officer); }
+  section.tier.t-prestige{ border-left-color: var(--tier-prestige); }
+
+  .tier-head{
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 4px;
+  }
+  .tier-head h2{
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--gold-strong);
+    margin: 0;
+  }
+  .tier-count{
+    font-size: 11px;
+    color: var(--ink-faint);
+    letter-spacing: .04em;
+  }
+  .tier-desc{
+    font-size: 12.5px;
+    color: var(--ink-faint);
+    margin: 2px 0 16px;
+    max-width: 62ch;
+  }
+
+  table{
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  th{
+    text-align: left;
+    font-size: 10.5px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 600;
+    padding: 0 10px 8px 0;
+    border-bottom: 1px solid var(--line-strong);
+  }
+  td{
+    padding: 13px 10px 13px 0;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+    line-height: 1.55;
+  }
+  tr:last-child td{ border-bottom: none; }
+  .title-cell{
+    width: 30%;
+    white-space: nowrap;
+  }
+  .title-name{
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 15.5px;
+    color: var(--ink);
+  }
+  .reason-cell{ color: var(--ink-dim); }
+
+  .pill{
+    display: inline-block;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 999px;
+    margin-top: 4px;
+  }
+  .pill.lead{ background: var(--tier-lead-wash); color: var(--tier-lead); }
+  .pill.dept{ background: var(--tier-dept-wash); color: var(--tier-dept); }
+  .pill.officer{ background: var(--tier-officer-wash); color: var(--tier-officer); }
+  .pill.liaison{ background: var(--tier-liaison-wash); color: var(--tier-liaison); }
+  .pill.prestige{ background: var(--tier-prestige-wash); color: var(--tier-prestige); }
+
+  .ladder{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    font-size: 12.5px;
+    color: var(--ink-dim);
+    margin-bottom: 16px;
+  }
+  .ladder .step{
+    font-family: Georgia, serif;
+    color: var(--ink);
+    font-size: 13.5px;
+  }
+  .ladder .arrow{ color: var(--red); }
+
+  footer{
+    margin-top: 32px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    font-size: 11px;
+    color: var(--ink-faint);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media print{
+    body{ background: #fff; padding: 0; }
+  }
+</style>
+
+<div class="sheet">
+  <div class="banner">
+    <div class="kicker">Faction Reformat Proposal, Draft 1</div>
+    <h1>The Corleone Family</h1>
+    <div class="subtitle">"Rank Structure &amp; Rationale"</div>
+  </div>
+
+  <div class="intro-panel">
+    <h2>Overview</h2>
+    <p>This proposal splits the family into <strong>five tiers</strong>: leadership at the top, department heads who each own one function, a single cross-department liaison who organizes between departments and backs up any of them, a broad officer rank, and a five-step prestige ladder for members who haven't been made yet. The prestige ladder has <strong>no permission changes</strong>, it's there to give rank-and-file members something to climb toward.</p>
+  </div>
+
+  <section class="tier t-lead">
+    <div class="tier-head">
+      <h2>Leadership</h2>
+      <span class="tier-count">3 titles</span>
+    </div>
+    <div class="tier-desc">Full or near-full permissions. Runs the family and its direction.</div>
+    <table>
+      <thead><tr><th>Title</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="title-cell"><div class="title-name">Leader</div><span class="pill lead">Fixed</span></td>
+          <td class="reason-cell">The head of the family, carrying every permission with no restrictions. Sets the family's overall direction, has final say on major decisions, and answers for the faction as a whole.</td>
+        </tr>
+        <tr>
+          <td class="title-cell"><div class="title-name">Co-Leader</div><span class="pill lead">Fixed</span></td>
+          <td class="reason-cell">Second-in-command, one step below the Leader with the same full access. Keeps the family running day-to-day and picks up leadership duties whenever the Leader is unavailable.</td>
+        </tr>
+        <tr>
+          <td class="title-cell"><div class="title-name">Underboss</div><span class="pill lead">Senior Leadership</span></td>
+          <td class="reason-cell">Historically the Don's most trusted second, running daily operations in his stead. Oversees the department heads as a group, steps into any decision that needs leadership-level judgment, and keeps the family's overall strategy on track.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="tier t-dept">
+    <div class="tier-head">
+      <h2>Department Heads</h2>
+      <span class="tier-count">4 titles</span>
+    </div>
+    <div class="tier-desc">Elevated permissions, scoped to one function of the family's operation.</div>
+    <table>
+      <thead><tr><th>Title</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="title-cell"><div class="title-name">Caporegime</div><span class="pill dept">Organized Crime</span></td>
+          <td class="reason-cell">Italian for "head of the crew," the traditional boss of a Cosa Nostra crew running its rackets. Owns Organized Crime end to end, keeping utilities stocked and payouts moving, tracking who's currently slotted into an OC, and optimizing crews around role weight and members' Crime Skill (CS).</td>
+        </tr>
+        <tr>
+          <td class="title-cell"><div class="title-name">Consigliere</div><span class="pill dept">War Strategist</span></td>
+          <td class="reason-cell">Italian for "counselor," the Don's traditional advisor on strategy and conflict with outside families. Runs the war effort: negotiating terms, assigning chain watchers and chain bonuses, developing new strategies, and putting out war newsletters.</td>
+        </tr>
+        <tr>
+          <td class="title-cell"><div class="title-name">Contabile</div><span class="pill dept">Treasury</span></td>
+          <td class="reason-cell">Italian for "the accountant," the one who keeps the books straight. Oversees the armory and the family's funds: managing war caches, tracking who's donated what, reimbursing members from the faction bank, handling war payouts, and weighing in on negotiated war terms.</td>
+        </tr>
+        <tr>
+          <td class="title-cell"><div class="title-name">Sensale</div><span class="pill dept">Human Resources</span></td>
+          <td class="reason-cell">Italian for "matchmaker" or "broker," historically the member who vouches for and introduces a prospective recruit into the family. Runs recruitment and onboarding as the family's HR arm: advertising the faction, sourcing new members, walking them through onboarding and TornStats setup, and carrying heavy say over promotions, accolades, and profile badges.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="tier t-liaison">
+    <div class="tier-head">
+      <h2>Cross-Department Liaison</h2>
+      <span class="tier-count">1 title</span>
+    </div>
+    <div class="tier-desc">A single seat. Organizes between departments and can back up any department head; permissions are spread thin across all fields rather than deep in one.</div>
+    <table>
+      <thead><tr><th>Title</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="title-cell"><div class="title-name">Luogotenente</div><span class="pill liaison">Lieutenant</span></td>
+          <td class="reason-cell">Italian for "lieutenant," literally "one who holds the place," a proxy who acts with a superior's authority in their absence. An all-around trusted member who helps out each department head without owning one of their own: can fulfill the tasks of any department, though limited in decision-making and management, and also helps organize events and giveaways.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="tier t-officer">
+    <div class="tier-head">
+      <h2>Officer</h2>
+      <span class="tier-count">1 title</span>
+    </div>
+    <div class="tier-desc">Broader permissions than rank-and-file, below department heads and the Luogotenente. Made Men can also step in as informal backup.</div>
+    <table>
+      <thead><tr><th>Title</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="title-cell"><div class="title-name">Made Man</div><span class="pill officer">Officer</span></td>
+          <td class="reason-cell">The real meaning of "made" is someone who's earned enough trust to operate with real standing. Fits broader access than rank-and-file without full leadership authority.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="tier t-prestige">
+    <div class="tier-head">
+      <h2>Prestige Ladder</h2>
+      <span class="tier-count">5 titles &middot; no permission change</span>
+    </div>
+    <div class="tier-desc">Purely status and motivation, the climb toward being made.</div>
+    <div class="ladder">
+      <span class="step">Leva</span><span class="arrow">→</span>
+      <span class="step">Cugine</span><span class="arrow">→</span>
+      <span class="step">Soldato</span><span class="arrow">→</span>
+      <span class="step">Sgarrista</span><span class="arrow">→</span>
+      <span class="step">Capodecina</span>
+    </div>
+    <table>
+      <thead><tr><th>Title</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="title-cell"><div class="title-name">Leva</div><span class="pill prestige">Entry</span></td>
+          <td class="reason-cell">Trial/recruit stage; mirrors the current probation period, signals "still proving yourself."</td>
+        </tr>
+        <tr>
+          <td class="title-cell"><div class="title-name">Cugine</div><span class="pill prestige">Prestige</span></td>
+          <td class="reason-cell">Slang for an up-and-comer actively trying to get made. Built-in motivation to stay active.</td>
+        </tr>
+        <tr>
+          <td class="title-cell"><div class="title-name">Soldato</div><span class="pill prestige">Prestige</span></td>
+          <td class="reason-cell">A proven, dependable soldier. First real mark of respect above trial status.</td>
+        </tr>
+        <tr>
+          <td class="title-cell"><div class="title-name">Sgarrista</div><span class="pill prestige">Prestige</span></td>
+          <td class="reason-cell">Trusted senior soldier with real standing, but not yet leading anything. The "you've clearly earned this" tier.</td>
+        </tr>
+        <tr>
+          <td class="title-cell"><div class="title-name">Capodecina</div><span class="pill prestige">Prestige</span></td>
+          <td class="reason-cell">Informally leads and mentors without official authority. Last rung before Made Man, so top members have a visible "you're next" target.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <footer>
+    <span>The Corleone Family: Rank Proposal</span>
+    <span>Draft 1</span>
+  </footer>
+</div>
