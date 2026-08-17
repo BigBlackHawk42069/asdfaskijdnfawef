@@ -1,0 +1,560 @@
+<title>The Corleone Family: Occupational Expectations</title>
+<style>
+  :root{
+    --bg: #0d0c0c;
+    --panel: #1c1a1a;
+    --panel-line: #33201f;
+    --line: #332c2c;
+    --line-strong: #4a3d3d;
+    --ink: #efe6dc;
+    --ink-dim: #b9ada0;
+    --ink-faint: #857a70;
+    --red: #c6272d;
+    --red-strong: #e2393f;
+    --red-deep: #8c1a1e;
+    --red-mid: #a85a5a;
+    --red-soft: #8a7472;
+    --gold: #d9b44a;
+    --gold-strong: #ecc766;
+    --row-alt: #201d1d;
+    --tier-lead: #e2393f;
+    --tier-dept: #d9b44a;
+    --tier-officer: #9fb0a8;
+    --tier-prestige: #8f8577;
+    --shadow: 0 1px 2px rgba(0,0,0,.5), 0 14px 40px rgba(0,0,0,.55);
+  }
+
+  *{ box-sizing: border-box; }
+  body{
+    background: var(--bg);
+    background-image: radial-gradient(ellipse 900px 500px at 50% -10%, rgba(198,39,45,.10), transparent);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    padding: 48px 24px 100px;
+  }
+  .sheet{ max-width: 1080px; margin: 0 auto; }
+
+  .banner{
+    background: #000;
+    border: 1px solid var(--panel-line);
+    box-shadow: var(--shadow), inset 0 0 0 1px rgba(198,39,45,.15);
+    border-radius: 3px;
+    padding: 38px 30px 32px;
+    text-align: center;
+    margin-bottom: 26px;
+  }
+  h1{
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 700;
+    font-size: 42px;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    color: var(--red-strong);
+    text-shadow: 0 0 22px rgba(226,57,63,.35);
+    margin: 0 0 10px;
+    text-wrap: balance;
+  }
+  .subtitle{
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 15px;
+    letter-spacing: .02em;
+    color: var(--gold-strong);
+  }
+
+  .preamble{
+    text-align: center;
+    padding: 6px 20px 34px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--line);
+  }
+  .preamble-label{
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .preamble p{
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 14.5px;
+    line-height: 1.85;
+    color: var(--ink-dim);
+    max-width: 66ch;
+    margin: 0 auto 14px;
+    text-wrap: pretty;
+  }
+  .preamble p:last-child{ margin-bottom: 0; }
+  .preamble p::first-letter{
+    font-size: 1.6em;
+    color: var(--gold-strong);
+  }
+
+  .table-block{ margin-bottom: 34px; }
+  .table-block:last-child{ margin-bottom: 0; }
+  .table-head{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 6px 20px;
+    padding-bottom: 10px;
+    margin-bottom: 14px;
+    border-bottom: 2px solid var(--accent, var(--red));
+  }
+  .table-block{ --accent: var(--red-strong); }
+
+  .table-title{
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 700;
+    font-size: 21px;
+    text-transform: uppercase;
+    letter-spacing: .03em;
+    color: var(--accent, var(--red-strong));
+  }
+  .table-desc{
+    font-size: 12px;
+    color: var(--ink-faint);
+    max-width: 44ch;
+  }
+
+  .section-purpose{
+    margin-bottom: 16px;
+  }
+  .section-purpose p{
+    font-size: 13.5px;
+    line-height: 1.75;
+    color: var(--ink-dim);
+    max-width: 82ch;
+    margin: 0 0 10px;
+  }
+  .section-purpose p:last-child{ margin-bottom: 0; }
+
+  .table-scroll{
+    overflow-x: auto;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    box-shadow: var(--shadow);
+  }
+  table{
+    width: 100%;
+    min-width: 760px;
+    border-collapse: collapse;
+    background: var(--panel);
+  }
+  thead th{
+    position: sticky;
+    top: 0;
+    background: #0f0e0e;
+    text-align: left;
+    font-size: 10.5px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 700;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--line-strong);
+  }
+  tbody tr:nth-child(even){ background: var(--row-alt); }
+  tbody tr:not(:last-child) td{ border-bottom: 1px solid var(--line); }
+  td{
+    padding: 14px 14px;
+    vertical-align: top;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+  td.col-rank{
+    width: 18%;
+    white-space: nowrap;
+  }
+  td.col-resp{ width: 82%; color: var(--ink-dim); }
+
+  .rank-name{
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 15px;
+    color: var(--ink);
+  }
+  .rank-tag{
+    display: block;
+    margin-top: 3px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  ul.cell-list{
+    margin: 0;
+    padding-left: 16px;
+  }
+  ul.cell-list li{ margin-bottom: 4px; }
+  ul.cell-list li:last-child{ margin-bottom: 0; }
+  ul.cell-list.placeholder li{ color: var(--ink-faint); font-style: italic; }
+
+  .rank-chain{
+    display: flex;
+    flex-direction: column;
+  }
+  .rank-chain-item{ padding: 6px 0; }
+  .rank-chain-item .rank-name{ font-size: 15px; }
+  .rank-chain-desc{
+    font-size: 13px;
+    color: var(--ink-dim);
+    margin: 3px 0 0;
+    max-width: 68ch;
+  }
+  .chain-down-arrow{
+    text-align: left;
+    color: var(--red-soft);
+    font-size: 13px;
+  }
+
+  .role-sections{
+    display: flex;
+    flex-direction: column;
+  }
+  .role-section{
+    padding: 20px 24px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+  }
+  .role-section + .role-section{ margin-top: 14px; }
+  .role-head{
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .role-head .rank-name{ font-size: 17px; }
+  .role-purpose{
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: var(--ink-dim);
+    max-width: 78ch;
+    margin: 0 0 14px;
+  }
+  .role-resp-label{
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 6px;
+  }
+  .role-section .rank-tag{
+    display: inline-block;
+    margin-top: 0;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    padding: 2px 9px;
+  }
+  .role-section.officer-block{ margin-bottom: 18px; }
+
+  .titles-row{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 2px 0 18px;
+  }
+  .titles-row .chip{
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 13px;
+    color: var(--ink);
+    background: var(--panel);
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    padding: 4px 13px;
+  }
+  .titles-row.centered{ justify-content: center; }
+  .titles-row.chip-card{
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 10px 18px;
+    width: fit-content;
+    margin: 0 auto;
+  }
+  .chip.chip-apex{
+    border-color: var(--red-mid);
+    color: var(--red-mid);
+    font-weight: 700;
+  }
+  .chip.chip-soldier{
+    border-color: var(--red-soft);
+    color: var(--red-soft);
+  }
+  .chip.chip-upper{
+    border-color: var(--red-strong);
+    color: var(--red-strong);
+    font-weight: 700;
+  }
+  .chip.chip-dept-red{
+    border-color: var(--red);
+    color: var(--red);
+    font-weight: 700;
+  }
+  .soldier-hierarchy{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .soldier-hierarchy .titles-row{ margin: 0; }
+  .hierarchy-connector{
+    width: 1px;
+    height: 16px;
+    background: var(--line-strong);
+  }
+  .titles-row .arrow{
+    color: var(--red);
+    font-size: 13px;
+  }
+
+  .flowchart{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 2px 20px 32px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--line);
+  }
+  .flowchart .titles-row{ margin: 0; }
+  .flowchart-label{
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+  .flow-arrow-up{
+    font-size: 14px;
+    line-height: 1;
+    color: var(--red);
+  }
+
+  footer{
+    margin-top: 32px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    font-size: 11px;
+    color: var(--ink-faint);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media print{
+    body{ background: #fff; padding: 0; }
+  }
+</style>
+
+<div class="sheet">
+  <div class="banner">
+    <h1>The Corleone Family</h1>
+    <div class="subtitle">Occupational Expectations</div>
+  </div>
+
+  <div class="preamble">
+    <div class="preamble-label">Preamble</div>
+    <p>This document sets out, in writing, what is expected of every rank within The Corleone Family: the purpose each position serves and the responsibilities that come with it. It stands as the standard the family holds itself to, and the standard by which the family holds its members accountable.</p>
+  </div>
+
+  <div class="flowchart">
+    <div class="flowchart-label">Structure at a Glance</div>
+    <div class="titles-row centered chip-card">
+      <span class="chip chip-upper">Leader</span><span class="chip chip-upper">Co-Leader</span><span class="chip chip-upper">Underboss</span>
+    </div>
+    <div class="hierarchy-connector"></div>
+    <div class="titles-row centered">
+      <span class="chip chip-dept-red">Caporegime</span><span class="chip chip-dept-red">Consigliere</span><span class="chip chip-dept-red">Contabile</span><span class="chip chip-dept-red">Sensale</span>
+    </div>
+    <div class="hierarchy-connector"></div>
+    <div class="titles-row centered">
+      <span class="chip chip-dept-red">Made Man</span>
+    </div>
+    <div class="flow-arrow-up">↑</div>
+    <div class="titles-row centered">
+      <span class="chip chip-apex">Luogotenente</span>
+    </div>
+    <div class="flow-arrow-up">↑</div>
+    <div class="titles-row centered">
+      <span class="chip chip-soldier">Leva</span><span class="arrow">→</span><span class="chip chip-soldier">Cugine</span><span class="arrow">→</span><span class="chip chip-soldier">Soldato</span><span class="arrow">→</span><span class="chip chip-soldier">Sgarrista</span><span class="arrow">→</span><span class="chip chip-soldier">Capodecina</span>
+    </div>
+  </div>
+
+  <div class="table-block leadership">
+    <div class="table-head">
+      <span class="table-title">Upper Leadership</span>
+    </div>
+    <div class="titles-row chip-card">
+      <span class="chip chip-upper">Leader</span><span class="chip chip-upper">Co-Leader</span><span class="chip chip-upper">Underboss</span>
+    </div>
+    <div class="section-purpose">
+      <p>Leadership exists as the family's foundational authority. Though positioned at the top of the chain, its role sits at the heart of the family, a solid, powerful core ultimately liable for the family's culture, effectiveness, and direction.</p>
+      <p>That authority comes mainly from training and trusting department heads with their respective areas, and from stepping in to resolve faction disputes when necessary. Rather than making every decision itself, leadership's core responsibility is placing the right people into the right roles, the ones equipped to make the correct calls for their own departments, while retaining ultimate authority over the family as a whole. It retains the right to veto or impose policy where necessary.</p>
+      <p>That power, however, is exercised under the consideration of the leadership unit, not any one leader alone. In times of uncertainty, leadership should consult with each other before implementing policy, removing someone from the family, or taking other major action. However powerful, leadership still relies on the community to carry its decisions out.</p>
+    </div>
+    <div class="role-sections">
+      <div class="role-section">
+        <div class="role-resp-label">Responsibilities</div>
+        <ul class="cell-list">
+          <li>Set the family's overall direction and hold accountability for its culture and effectiveness</li>
+          <li>Train and trust department heads to run their own areas</li>
+          <li>Step in to resolve faction disputes when necessary</li>
+          <li>Assign members to the roles best suited to lead their departments</li>
+          <li>Set or veto policy when necessary</li>
+          <li>Consult with the rest of leadership before major decisions, including policy changes and removals from the family</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="table-block departments">
+    <div class="table-head">
+      <span class="table-title">Department Heads &amp; Liaison</span>
+    </div>
+    <div class="soldier-hierarchy dept-hierarchy">
+    <div class="titles-row centered">
+      <span class="chip chip-dept-red">Caporegime</span><span class="chip chip-dept-red">Consigliere</span><span class="chip chip-dept-red">Contabile</span><span class="chip chip-dept-red">Sensale</span>
+    </div>
+    <div class="hierarchy-connector"></div>
+    <div class="titles-row centered">
+      <span class="chip chip-dept-red">Made Man</span>
+    </div>
+    </div>
+    <div class="section-purpose">
+      <p>Department Heads, while primarily overseeing their specific domains, act as an extension of senior leadership. Their authority, while greatest within their own domain, is not bound to it, they exercise that authority equally among all lower ranks. No department head holds greater authority than another, nor than their superiors, but each retains authority over every officer and soldier rank and should be respected accordingly. With the exception of leadership's authority, they have the final say within their respective department, as well as the ultimate liability for it.</p>
+      <p>With the exception of the Made Man, these positions are permanent, single-seat roles that cannot be promoted into. They may only be replaced if the member resigns or has the position revoked by upper leadership. The Made Man is the only true leadership position that can hold multiple members at once, and the only one that can be promoted into directly from Luogotenente.</p>
+    </div>
+    <div class="role-sections">
+      <div class="role-section">
+        <div class="role-head"><div class="rank-name">Caporegime</div><span class="rank-tag">Organized Crime</span></div>
+        <p class="role-purpose">The Caporegime handles Organized Crimes for the family. They are the most knowledgeable member on how OCs work in Torn, and are responsible for keeping OCs moving efficiently and effectively. While not required to manually and directly upkeep Organized Crimes themselves, they are responsible for delegating those responsibilities as necessary to ensure smooth operation.</p>
+        <div class="role-resp-label">Responsibilities</div>
+        <ul class="cell-list">
+          <li>Ensure all utilities are stocked</li>
+          <li>Ensure all OCs are paid out</li>
+          <li>Ensure OC rewards are sold appropriately and the funds added to the faction bank</li>
+          <li>Ensure every family member understands the OC system and never sits idle</li>
+          <li>Ensure each member has the correct utilities for their crimes before planning is finished</li>
+          <li>Ensure OCs are generated efficiently based on the Crime Skill (CS) of available members</li>
+        </ul>
+      </div>
+
+      <div class="role-section">
+        <div class="role-head"><div class="rank-name">Consigliere</div><span class="rank-tag">War Strategist</span></div>
+        <p class="role-purpose">The Consigliere handles war strategy for the family. They are the primary delegator in leading wars, chains, and faction raids. While this is a heavy responsibility to carry, they retain the greatest authority over officer and soldier ranks to help accomplish their tasks. With the help of the Contabile, or any leadership rank, they are also in charge of negotiating war terms.</p>
+        <div class="role-resp-label">Responsibilities</div>
+        <ul class="cell-list">
+          <li>Ensure all members of the family are prepped for war</li>
+          <li>Develop and research war strategy</li>
+          <li>Delegate war newsletters</li>
+          <li>Delegate chain watchers</li>
+          <li>Handle diplomacy with opposing factions</li>
+          <li>Ensure armory is stocked with medical items, points, Xanax, and RW weapons</li>
+        </ul>
+      </div>
+
+      <div class="role-section">
+        <div class="role-head"><div class="rank-name">Contabile</div><span class="rank-tag">Treasury</span></div>
+        <p class="role-purpose">The Contabile is responsible for the family's financial records. They track all expenditures and reimbursements, as well as keep account of who gives and takes what from the armory. They are consulted on any economic decisions made for the faction. As the most trusted member of the faction, and with that trust comes great liability, they must be very selective with their delegations.</p>
+        <div class="role-resp-label">Responsibilities</div>
+        <ul class="cell-list">
+          <li>Track all faction expenditures and reimbursements</li>
+          <li>Keep an accurate log of who gives and takes items from the armory</li>
+          <li>Assist the Consigliere in negotiating war terms</li>
+          <li>Manage all war payouts</li>
+          <li>Ensure payout system remains rewarding and fair</li>
+        </ul>
+      </div>
+
+      <div class="role-section">
+        <div class="role-head"><div class="rank-name">Sensale</div><span class="rank-tag">Human Resources</span></div>
+        <p class="role-purpose">The Sensale is essentially the family's Human Resources. They handle recruitment, advertisement, onboarding, and training, and serve as the member others can bring their complaints to. They help leadership resolve disputes, and as a likable, considerate presence within the family, are trusted to preserve and strengthen its morale.</p>
+        <div class="role-resp-label">Responsibilities</div>
+        <ul class="cell-list">
+          <li>Recruitment &amp; Onboarding</li>
+          <li>Faction advertisement &amp; promotion</li>
+          <li>Grant members new titles, profile badges, and other accolades when deserved</li>
+          <li>Ensure regular events &amp; giveaways occur to preserve engagement</li>
+          <li>Help less experienced members find their way</li>
+        </ul>
+      </div>
+
+      <div class="role-section">
+        <div class="role-head"><div class="rank-name">Made Man</div><span class="rank-tag">Liaison</span></div>
+        <p class="role-purpose">The Made Man is best understood as the family's most senior soldier rank, one that crosses into the respect and responsibility normally reserved for true leadership. It's held by members who have shown immense loyalty and proven themselves trusted, valuable parts of the family over time.</p>
+        <p class="role-purpose">Loyalty alone isn't enough to hold the position, however. A Made Man is expected to be highly knowledgeable across many areas of Torn and to have proven themselves dependable, someone who gets tasks done and does so in a timely manner. Department heads may delegate work to them directly, and the Made Man may, in turn, subcontract that work down to officers and soldiers beneath them, provided doing so never compromises the security of the family. Despite acting as their direct assistant, the Made Man is not subordinate to a department head, the two are mutual peers, and it's that parity that places the role within leadership rather than beneath it.</p>
+        <div class="role-resp-label">Responsibilities</div>
+        <ul class="cell-list">
+          <li>Remain active and dependable</li>
+          <li>Ensure that department heads are assisted in their responsibilities</li>
+          <li>Be a role model that other members aspire to</li>
+          <li>Take initiative in faction improvement and refinement</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="table-block soldiers">
+    <div class="table-head">
+      <span class="table-title">Soldier Ranks</span>
+    </div>
+    <div class="soldier-hierarchy">
+      <div class="titles-row centered">
+        <span class="chip chip-apex">Luogotenente</span>
+      </div>
+      <div class="flow-arrow-up">↑</div>
+      <div class="titles-row centered">
+        <span class="chip chip-soldier">Leva</span><span class="arrow">→</span><span class="chip chip-soldier">Cugine</span><span class="arrow">→</span><span class="chip chip-soldier">Soldato</span><span class="arrow">→</span><span class="chip chip-soldier">Sgarrista</span><span class="arrow">→</span><span class="chip chip-soldier">Capodecina</span>
+      </div>
+    </div>
+    <div class="section-purpose">
+      <p>The soldier ranks form a hierarchy where each higher rank is achieved through a member's war and Organized Crime efforts, as well as their time with the family.</p>
+      <p>The Officer rank stands above every rank beneath it, achieved through extended commitment and exemplary war effort, along with dependability and consistent chain watching. It is not a simple title to achieve, and seats for it are limited: Officers hold authority over soldiers in war and are delegated directly by their superiors in war efforts.</p>
+    </div>
+
+    <div class="role-sections">
+      <div class="role-section">
+        <div class="role-head"><div class="rank-name">Luogotenente</div><span class="rank-tag">Officer</span></div>
+        <p class="role-purpose">Reaching Luogotenente isn't simply the next step in a line of progression. While it can only be achieved from the rank of Capodecina, it requires more than following instructions to get there. It reflects a demonstrated ability to lead in chains, communicate effectively with superiors, and take initiative across every part of the family's efforts.</p>
+      </div>
+
+      <div class="role-section">
+        <div class="role-head"><div class="rank-name">Soldier Ranks</div></div>
+        <p class="role-purpose">This hierarchy is where roughly 80% of the family's members exist. Though higher positions exist above Capodecina, it should be a highly revered position, one members can feel satisfied holding indefinitely once they've reached it. Advancing through it requires loyalty to the faction and consistent war effort, with no fixed amount of time required at each title before the next is earned. It offers a way to recognize members beyond a monetary payout. These five ranks are the official "ranks" of the family, while every higher position exists outside a simple linear progression.</p>
+        <div class="rank-chain">
+          <div class="rank-chain-item">
+            <div class="rank-name">Capodecina</div>
+          </div>
+          <div class="chain-down-arrow">↑</div>
+          <div class="rank-chain-item">
+            <div class="rank-name">Sgarrista</div>
+          </div>
+          <div class="chain-down-arrow">↑</div>
+          <div class="rank-chain-item">
+            <div class="rank-name">Soldato</div>
+          </div>
+          <div class="chain-down-arrow">↑</div>
+          <div class="rank-chain-item">
+            <div class="rank-name">Cugine</div>
+          </div>
+          <div class="chain-down-arrow">↑</div>
+          <div class="rank-chain-item">
+            <div class="rank-name">Leva</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <span>The Corleone Family: Occupational Expectations</span>
+  </footer>
+</div>
