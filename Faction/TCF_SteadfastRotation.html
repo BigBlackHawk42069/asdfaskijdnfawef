@@ -1,0 +1,341 @@
+<title>The Corleone Family: Steadfast Rotation</title>
+<style>
+  :root{
+    --bg: #0d0c0c;
+    --panel: #1c1a1a;
+    --panel-line: #33201f;
+    --line: #332c2c;
+    --line-strong: #4a3d3d;
+    --ink: #efe6dc;
+    --ink-dim: #b9ada0;
+    --ink-faint: #857a70;
+    --red: #c6272d;
+    --red-strong: #e2393f;
+    --red-wash: #2c1414;
+    --gold: #d9b44a;
+    --gold-strong: #ecc766;
+    --gold-wash: #2b230f;
+    --stat-str: #e2393f;
+    --stat-str-wash: #2c1413;
+    --stat-spd: #ecc766;
+    --stat-spd-wash: #2b230f;
+    --stat-def: #7ea0c9;
+    --stat-def-wash: #171f26;
+    --stat-dex: #8fae7a;
+    --stat-dex-wash: #171f18;
+    --shadow: 0 1px 2px rgba(0,0,0,.5), 0 14px 40px rgba(0,0,0,.55);
+  }
+
+  *{ box-sizing: border-box; }
+  body{
+    background: var(--bg);
+    background-image: radial-gradient(ellipse 900px 500px at 50% -10%, rgba(198,39,45,.10), transparent);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    padding: 40px 16px 80px;
+  }
+  .sheet{ max-width: 760px; margin: 0 auto; }
+
+  .banner{
+    background: #000;
+    border: 1px solid var(--panel-line);
+    box-shadow: var(--shadow), inset 0 0 0 1px rgba(198,39,45,.15);
+    border-radius: 3px;
+    padding: 30px 20px 24px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .kicker{
+    font-size: 10px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  h1{
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 700;
+    font-size: 32px;
+    text-transform: uppercase;
+    letter-spacing: .03em;
+    color: var(--red-strong);
+    text-shadow: 0 0 22px rgba(226,57,63,.35);
+    margin: 0 0 8px;
+    text-wrap: balance;
+    line-height: 1.15;
+  }
+  .subtitle{
+    font-family: Georgia, "Times New Roman", serif;
+    font-style: italic;
+    font-size: 13.5px;
+    color: var(--gold-strong);
+  }
+
+  .section-title{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    padding-bottom: 10px;
+    margin: 26px 0 14px;
+    border-bottom: 2px solid var(--red);
+  }
+  .section-title:first-of-type{ margin-top: 4px; }
+  .section-title h2{
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 700;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: .03em;
+    color: var(--red-strong);
+    margin: 0;
+  }
+  .section-title span.hint{
+    font-size: 11px;
+    color: var(--ink-faint);
+  }
+
+  /* Bonus tiers strip */
+  .bonus-strip{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+  .bonus-box{
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 14px 6px;
+    text-align: center;
+    box-shadow: var(--shadow);
+  }
+  .bonus-box.focus{ border-top: 3px solid var(--gold-strong); }
+  .bonus-box.base{ border-top: 3px solid var(--ink-faint); }
+  .bonus-box .pct{
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 700;
+    font-size: 22px;
+  }
+  .bonus-box.focus .pct{ color: var(--gold-strong); }
+  .bonus-box.base .pct{ color: var(--ink-faint); }
+  .bonus-box .lbl{
+    font-size: 9.5px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-top: 2px;
+  }
+
+  .stat-chip{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 12px 14px;
+    border-radius: 4px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 15px;
+    font-weight: 700;
+  }
+  .stat-chip .pct{ font-size: 15px; }
+  .stat-chip.on{ border: 1px solid; }
+  .stat-chip.on.str{ background: var(--stat-str-wash); border-color: var(--stat-str); color: var(--stat-str); }
+  .stat-chip.on.spd{ background: var(--stat-spd-wash); border-color: var(--stat-spd); color: var(--stat-spd); }
+  .stat-chip.on.def{ background: var(--stat-def-wash); border-color: var(--stat-def); color: var(--stat-def); }
+  .stat-chip.on.dex{ background: var(--stat-dex-wash); border-color: var(--stat-dex); color: var(--stat-dex); }
+  .stat-chip.off{
+    background: transparent;
+    border: 1px dashed var(--line-strong);
+    color: var(--ink-faint);
+    font-weight: 600;
+  }
+
+  /* Steadfast calendar — 4 cards aligned horizontally */
+  .calendar-grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  .month-card{
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 12px;
+    box-shadow: var(--shadow);
+  }
+  .month-card.is-current{ border-color: var(--gold-strong); box-shadow: var(--shadow), 0 0 0 1px var(--gold-strong); }
+  .month-head{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+  .month-name{
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .month-card.is-current .month-name{ color: var(--gold-strong); }
+  .month-tag{
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--gold-strong);
+    border: 1px solid var(--gold-strong);
+    border-radius: 999px;
+    padding: 1px 7px;
+    width: fit-content;
+  }
+  .month-card .stat-rows{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .month-card .stat-chip{ font-size: 12.5px; padding: 7px 9px; }
+  .month-card .stat-chip .pct{ font-size: 12.5px; }
+
+  /* Rotation pattern strip (inside Steadfast Bonuses section) */
+  .pattern-row{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--line-strong);
+  }
+  .pattern-pair{
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--ink-dim);
+    background: var(--panel);
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    padding: 5px 12px;
+  }
+  .pattern-pair.is-current{
+    color: var(--gold-strong);
+    border-color: var(--gold-strong);
+    background: var(--gold-wash);
+  }
+  .pattern-arrow{
+    color: var(--ink-faint);
+    font-size: 12px;
+  }
+
+  footer{
+    margin-top: 28px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    font-size: 11px;
+    color: var(--ink-faint);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (max-width: 640px){
+    .calendar-grid{ grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 420px){
+    .bonus-strip{ grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media print{
+    body{ background: #fff; padding: 0; }
+  }
+</style>
+
+<div class="sheet">
+  <div class="banner">
+    <h1>The Corleone Family</h1>
+    <div class="subtitle">Steadfast Rotation &middot; Monthly Focus Cycle</div>
+  </div>
+
+  <div class="section-title">
+    <h2>Steadfast Bonuses</h2>
+  </div>
+  <div class="bonus-strip">
+    <div class="bonus-box focus"><div class="pct">+9%</div><div class="lbl">Focus</div></div>
+    <div class="bonus-box focus"><div class="pct">+9%</div><div class="lbl">Focus</div></div>
+    <div class="bonus-box base"><div class="pct">+5%</div><div class="lbl">Base</div></div>
+    <div class="bonus-box base"><div class="pct">+5%</div><div class="lbl">Base</div></div>
+  </div>
+  <div class="pattern-row">
+    <span class="pattern-pair is-current">Strength + Dexterity</span>
+    <span class="pattern-arrow">&rarr;</span>
+    <span class="pattern-pair">Speed + Defense</span>
+    <span class="pattern-arrow">&rarr;</span>
+    <span class="pattern-pair">Strength + Speed</span>
+    <span class="pattern-arrow">&rarr;</span>
+    <span class="pattern-pair">Defense + Dexterity</span>
+    <span class="pattern-arrow">&rarr;</span>
+    <span class="pattern-pair">repeat</span>
+  </div>
+
+  <div class="section-title">
+    <h2>Steadfast Calendar</h2>
+    <span class="hint">1 month per card</span>
+  </div>
+  <div class="calendar-grid">
+    <div class="month-card is-current">
+      <div class="month-head">
+        <span class="month-name">August 2026</span>
+        <span class="month-tag">Current</span>
+      </div>
+      <div class="stat-rows">
+        <div class="stat-chip on str">Strength <span class="pct">9%</span></div>
+        <div class="stat-chip on dex">Dexterity <span class="pct">9%</span></div>
+        <div class="stat-chip off">Speed <span class="pct">5%</span></div>
+        <div class="stat-chip off">Defense <span class="pct">5%</span></div>
+      </div>
+    </div>
+    <div class="month-card">
+      <div class="month-head">
+        <span class="month-name">September 2026</span>
+      </div>
+      <div class="stat-rows">
+        <div class="stat-chip on spd">Speed <span class="pct">9%</span></div>
+        <div class="stat-chip on def">Defense <span class="pct">9%</span></div>
+        <div class="stat-chip off">Strength <span class="pct">5%</span></div>
+        <div class="stat-chip off">Dexterity <span class="pct">5%</span></div>
+      </div>
+    </div>
+    <div class="month-card">
+      <div class="month-head">
+        <span class="month-name">October 2026</span>
+      </div>
+      <div class="stat-rows">
+        <div class="stat-chip on str">Strength <span class="pct">9%</span></div>
+        <div class="stat-chip on spd">Speed <span class="pct">9%</span></div>
+        <div class="stat-chip off">Defense <span class="pct">5%</span></div>
+        <div class="stat-chip off">Dexterity <span class="pct">5%</span></div>
+      </div>
+    </div>
+    <div class="month-card">
+      <div class="month-head">
+        <span class="month-name">November 2026</span>
+      </div>
+      <div class="stat-rows">
+        <div class="stat-chip on def">Defense <span class="pct">9%</span></div>
+        <div class="stat-chip on dex">Dexterity <span class="pct">9%</span></div>
+        <div class="stat-chip off">Strength <span class="pct">5%</span></div>
+        <div class="stat-chip off">Speed <span class="pct">5%</span></div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <span>The Corleone Family: Steadfast Rotation</span>
+  </footer>
+</div>
