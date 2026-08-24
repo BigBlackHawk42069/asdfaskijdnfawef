@@ -224,7 +224,8 @@
   .role-head{
     display: flex;
     align-items: baseline;
-    gap: 10px;
+    flex-wrap: wrap;
+    gap: 6px 10px;
     margin-bottom: 8px;
   }
   .role-head .rank-name{ font-size: 17px; }
@@ -347,6 +348,20 @@
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 8px;
+  }
+
+  @media (max-width: 640px){
+    body{ padding: 28px 12px 60px; }
+    .banner{ padding: 26px 16px 22px; margin-bottom: 20px; }
+    h1{ font-size: 27px; }
+    .subtitle{ font-size: 13px; }
+    .preamble{ padding: 6px 4px 26px; }
+    .table-block{ margin-bottom: 26px; }
+    .table-title{ font-size: 18px; }
+    .titles-row.chip-card{ padding: 8px 12px; }
+    .chip{ font-size: 12px; padding: 4px 11px; }
+    .role-section{ padding: 16px 16px; }
+    .flowchart{ padding: 2px 8px 24px; }
   }
 
   @media print{
