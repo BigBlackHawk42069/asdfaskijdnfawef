@@ -111,15 +111,15 @@
     text-align: center;
     box-shadow: var(--shadow);
   }
-  .bonus-box.focus{ border-top: 3px solid var(--gold-strong); }
-  .bonus-box.base{ border-top: 3px solid var(--ink-faint); }
+  .bonus-box.focus{ background: var(--gold-wash); border-color: var(--gold-strong); }
+  .bonus-box.base{ border-color: var(--line-strong); }
   .bonus-box .pct{
     font-family: Georgia, "Times New Roman", serif;
     font-weight: 700;
     font-size: 22px;
   }
   .bonus-box.focus .pct{ color: var(--gold-strong); }
-  .bonus-box.base .pct{ color: var(--ink-faint); }
+  .bonus-box.base .pct{ color: var(--ink-dim); }
   .bonus-box .lbl{
     font-size: 9.5px;
     letter-spacing: .06em;
@@ -146,9 +146,9 @@
   .stat-chip.on.def{ background: var(--stat-def-wash); border-color: var(--stat-def); color: var(--stat-def); }
   .stat-chip.on.dex{ background: var(--stat-dex-wash); border-color: var(--stat-dex); color: var(--stat-dex); }
   .stat-chip.off{
-    background: transparent;
-    border: 1px dashed var(--line-strong);
-    color: var(--ink-faint);
+    background: var(--panel);
+    border: 1px solid var(--line-strong);
+    color: var(--ink-dim);
     font-weight: 600;
   }
 
@@ -266,16 +266,15 @@
     <h2>Steadfast Bonuses</h2>
   </div>
   <div class="bonus-strip">
-    <div class="bonus-box focus"><div class="pct">+9%</div><div class="lbl">Focus</div></div>
-    <div class="bonus-box focus"><div class="pct">+9%</div><div class="lbl">Focus</div></div>
-    <div class="bonus-box base"><div class="pct">+5%</div><div class="lbl">Base</div></div>
-    <div class="bonus-box base"><div class="pct">+5%</div><div class="lbl">Base</div></div>
+    <div class="bonus-box focus"><div class="pct">+9%</div></div>
+    <div class="bonus-box focus"><div class="pct">+9%</div></div>
+    <div class="bonus-box base"><div class="pct">+5%</div></div>
+    <div class="bonus-box base"><div class="pct">+5%</div></div>
   </div>
   <div class="pattern-row" id="pattern-row"></div>
 
   <div class="section-title">
     <h2>Steadfast Calendar</h2>
-    <span class="hint">1 month per card</span>
   </div>
   <div class="calendar-grid" id="calendar-grid"></div>
 
@@ -305,7 +304,7 @@
     }
 
     function chip(stat, on){
-      return '<div class="stat-chip ' + (on ? "on " + stat : "off") + '">' +
+      return '<div class="stat-chip ' + (on ? "on " : "off ") + stat + '">' +
         NAMES[stat] + ' <span class="pct">' + (on ? "9%" : "5%") + '</span></div>';
     }
 
@@ -326,8 +325,7 @@
       var pair = PAIRS[pairIndex(d.getFullYear(), d.getMonth())];
       var rest = STATS.filter(function(s){ return pair.indexOf(s) === -1; });
       cards += '<div class="month-card' + (i === 0 ? " is-current" : "") + '">' +
-        '<div class="month-head"><span class="month-name">' + MONTHS[d.getMonth()] + " " + d.getFullYear() + '</span>' +
-        (i === 0 ? '<span class="month-tag">Current</span>' : "") + '</div>' +
+        '<div class="month-head"><span class="month-name">' + MONTHS[d.getMonth()] + " " + d.getFullYear() + '</span>' + '</div>' +
         '<div class="stat-rows">' + chip(pair[0], true) + chip(pair[1], true) + chip(rest[0], false) + chip(rest[1], false) + '</div></div>';
     }
     document.getElementById("calendar-grid").innerHTML = cards;
