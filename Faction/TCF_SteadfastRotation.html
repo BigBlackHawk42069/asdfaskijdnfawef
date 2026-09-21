@@ -12,13 +12,13 @@
     --red: #c6272d;
     --red-strong: #e2393f;
     --red-wash: #2c1414;
-    --gold: #d9b44a;
-    --gold-strong: #ecc766;
-    --gold-wash: #2b230f;
+    --accent: #c9c1b8;
+    --accent-strong: #ddd6ce;
+    --accent-wash: #262322;
     --stat-str: #e2393f;
     --stat-str-wash: #2c1413;
-    --stat-spd: #ecc766;
-    --stat-spd-wash: #2b230f;
+    --stat-spd: #d6cf5e;
+    --stat-spd-wash: #24230f;
     --stat-def: #7ea0c9;
     --stat-def-wash: #171f26;
     --stat-dex: #8fae7a;
@@ -49,7 +49,7 @@
     font-size: 10px;
     letter-spacing: .18em;
     text-transform: uppercase;
-    color: var(--gold);
+    color: var(--accent);
     font-weight: 700;
     margin-bottom: 12px;
   }
@@ -69,7 +69,7 @@
     font-family: Georgia, "Times New Roman", serif;
     font-style: italic;
     font-size: 13.5px;
-    color: var(--gold-strong);
+    color: var(--accent-strong);
   }
 
   .section-title{
@@ -104,21 +104,21 @@
     gap: 8px;
   }
   .bonus-box{
-    background: var(--panel);
+    background: color-mix(in srgb, var(--panel) 50%, transparent);
     border: 1px solid var(--line);
     border-radius: 4px;
     padding: 14px 6px;
     text-align: center;
     box-shadow: var(--shadow);
   }
-  .bonus-box.focus{ background: var(--gold-wash); border-color: var(--gold-strong); }
+  .bonus-box.focus{ background: color-mix(in srgb, var(--accent-wash) 50%, transparent); border-color: var(--accent-strong); }
   .bonus-box.base{ border-color: var(--line-strong); }
   .bonus-box .pct{
     font-family: Georgia, "Times New Roman", serif;
     font-weight: 700;
     font-size: 22px;
   }
-  .bonus-box.focus .pct{ color: var(--gold-strong); }
+  .bonus-box.focus .pct{ color: var(--accent-strong); }
   .bonus-box.base .pct{ color: var(--ink-dim); }
   .bonus-box .lbl{
     font-size: 9.5px;
@@ -140,13 +140,13 @@
     font-weight: 700;
   }
   .stat-chip .pct{ font-size: 15px; }
-  .stat-chip.on{ border: 1px solid; }
-  .stat-chip.on.str{ background: var(--stat-str-wash); border-color: var(--stat-str); color: var(--stat-str); }
-  .stat-chip.on.spd{ background: var(--stat-spd-wash); border-color: var(--stat-spd); color: var(--stat-spd); }
-  .stat-chip.on.def{ background: var(--stat-def-wash); border-color: var(--stat-def); color: var(--stat-def); }
-  .stat-chip.on.dex{ background: var(--stat-dex-wash); border-color: var(--stat-dex); color: var(--stat-dex); }
+  .stat-chip.on{ border: 1px solid var(--accent-strong); }
+  .stat-chip.on.str{ background: color-mix(in srgb, var(--stat-str-wash) 50%, transparent); color: var(--stat-str); }
+  .stat-chip.on.spd{ background: color-mix(in srgb, var(--stat-spd-wash) 50%, transparent); color: var(--stat-spd); }
+  .stat-chip.on.def{ background: color-mix(in srgb, var(--stat-def-wash) 50%, transparent); color: var(--stat-def); }
+  .stat-chip.on.dex{ background: color-mix(in srgb, var(--stat-dex-wash) 50%, transparent); color: var(--stat-dex); }
   .stat-chip.off{
-    background: var(--panel);
+    background: color-mix(in srgb, var(--panel) 50%, transparent);
     border: 1px solid var(--line-strong);
     color: var(--ink-dim);
     font-weight: 600;
@@ -159,13 +159,13 @@
     gap: 10px;
   }
   .month-card{
-    background: var(--panel);
+    background: transparent;
     border: 1px solid var(--line);
     border-radius: 4px;
     padding: 12px;
     box-shadow: var(--shadow);
   }
-  .month-card.is-current{ border-color: var(--gold-strong); box-shadow: var(--shadow), 0 0 0 1px var(--gold-strong); }
+  .month-card.is-current{ border-color: var(--accent-strong); box-shadow: var(--shadow), 0 0 0 1px var(--accent-strong); }
   .month-head{
     display: flex;
     flex-direction: row;
@@ -181,14 +181,14 @@
     text-transform: uppercase;
     color: var(--ink-faint);
   }
-  .month-card.is-current .month-name{ color: var(--gold-strong); }
+  .month-card.is-current .month-name{ color: var(--accent-strong); }
   .month-tag{
     font-size: 9px;
     font-weight: 700;
     letter-spacing: .06em;
     text-transform: uppercase;
-    color: var(--gold-strong);
-    border: 1px solid var(--gold-strong);
+    color: var(--accent-strong);
+    border: 1px solid var(--accent-strong);
     border-radius: 999px;
     padding: 1px 7px;
     width: fit-content;
@@ -216,15 +216,15 @@
     font-size: 12.5px;
     font-weight: 700;
     color: var(--ink-dim);
-    background: var(--panel);
+    background: color-mix(in srgb, var(--panel) 50%, transparent);
     border: 1px solid var(--line-strong);
     border-radius: 999px;
     padding: 5px 12px;
   }
   .pattern-pair.is-current{
-    color: var(--gold-strong);
-    border-color: var(--gold-strong);
-    background: var(--gold-wash);
+    color: var(--accent-strong);
+    border-color: var(--accent-strong);
+    background: color-mix(in srgb, var(--accent-wash) 50%, transparent);
   }
   .pattern-arrow{
     color: var(--ink-faint);
