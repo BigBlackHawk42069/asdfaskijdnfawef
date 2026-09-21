@@ -233,16 +233,32 @@
     font-size: 12px;
   }
 
-  footer{
+  .sponsor{
     margin-top: 28px;
     padding-top: 16px;
     border-top: 1px solid var(--line);
-    font-size: 11px;
+    text-align: center;
+  }
+  .sponsor-label{
+    font-size: 9.5px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
     color: var(--ink-faint);
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 8px;
+  }
+  .sponsor-name{
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+    margin: 6px 0 2px;
+  }
+  .sponsor-slogan{
+    font-family: Georgia, "Times New Roman", serif;
+    font-style: italic;
+    font-size: 12px;
+    color: var(--ink-dim);
   }
 
   @media (max-width: 640px){
@@ -280,9 +296,11 @@
   </div>
   <div class="calendar-grid" id="calendar-grid"></div>
 
-  <footer>
-    <span>The Corleone Family: Steadfast Rotation</span>
-  </footer>
+  <div class="sponsor">
+    <div class="sponsor-label">This page has been brought to you by</div>
+    <div class="sponsor-name">Fully Bricked Fitness</div>
+    <div class="sponsor-slogan">Get Bricked Today!</div>
+  </div>
 </div>
 
 <script>
