@@ -9,6 +9,8 @@
     --ink: #efe6dc;
     --ink-dim: #b9ada0;
     --ink-faint: #857a70;
+    --inactive-ink: #a4988b;
+    --inactive-line: #3f3434;
     --red: #c6272d;
     --red-strong: #e2393f;
     --red-wash: #2c1414;
@@ -112,14 +114,14 @@
     box-shadow: var(--shadow);
   }
   .bonus-box.focus{ background: color-mix(in srgb, var(--accent-wash) 50%, transparent); border-color: var(--accent-strong); }
-  .bonus-box.base{ border-color: var(--line-strong); }
+  .bonus-box.base{ border-color: var(--inactive-line); }
   .bonus-box .pct{
     font-family: Georgia, "Times New Roman", serif;
     font-weight: 700;
     font-size: 22px;
   }
   .bonus-box.focus .pct{ color: var(--accent-strong); }
-  .bonus-box.base .pct{ color: var(--ink-dim); }
+  .bonus-box.base .pct{ color: var(--inactive-ink); }
   .bonus-box .lbl{
     font-size: 9.5px;
     letter-spacing: .06em;
@@ -147,8 +149,8 @@
   .stat-chip.on.dex{ background: color-mix(in srgb, var(--stat-dex-wash) 50%, transparent); color: var(--stat-dex); }
   .stat-chip.off{
     background: color-mix(in srgb, var(--panel) 50%, transparent);
-    border: 1px solid var(--line-strong);
-    color: var(--ink-dim);
+    border: 1px solid var(--inactive-line);
+    color: var(--inactive-ink);
     font-weight: 600;
   }
 
@@ -215,9 +217,9 @@
     font-family: Georgia, "Times New Roman", serif;
     font-size: 12.5px;
     font-weight: 700;
-    color: var(--ink-dim);
+    color: var(--inactive-ink);
     background: color-mix(in srgb, var(--panel) 50%, transparent);
-    border: 1px solid var(--line-strong);
+    border: 1px solid var(--inactive-line);
     border-radius: 999px;
     padding: 5px 12px;
   }
